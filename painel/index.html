@@ -208,7 +208,8 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 </div>
 
 <script>
-// Carrega ../dados/dados.js (seus dados). Se não existir, usa os dados de exemplo.
+// <carregador> Carrega ../dados/dados.js (seus dados). Se não existir, usa os dados de exemplo.
+// (scripts/montar_painel.py troca este bloco pelos dados embutidos, para gerar um arquivo único.)
 (function () {
   const s = document.createElement('script');
   s.src = '../dados/dados.js';
@@ -216,6 +217,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   s.onerror = () => { const e = document.createElement('script'); e.src = 'dados-exemplo.js'; e.onload = iniciar; e.onerror = () => alert('Não achei os dados. Rode: python scripts/processar.py --exemplo'); document.head.appendChild(e); };
   document.head.appendChild(s);
 })();
+// </carregador>
 
 function iniciar() {
   const D = window.DADOS, CFG = D.config || {}, L = D.lancamentos || [];

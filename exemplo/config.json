@@ -49,5 +49,7 @@
     "valor_financiado": 170000.0,
     "juros_aa": 7.9
   },
-  "alpha_vantage_chave": ""
+  "alpha_vantage_chave": "",
+  "pasta_drive": "Finanças (exemplo)",
+  "painel_url": ""
 }

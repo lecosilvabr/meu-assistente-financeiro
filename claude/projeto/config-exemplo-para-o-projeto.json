@@ -1,0 +1,18 @@
+{
+  "nome": "Ana Exemplo",
+  "nome_assistente": "Finn da Ana",
+  "titular_no_banco": "ANA EXEMPLO DA SILVA",
+  "renda_liquida_mensal": 8000.00,
+  "dia_vencimento_fatura": 10,
+  "limite_cartao": 20000.00,
+  "valor_gasto_pontual": 1000.00,
+  "metas_mensais": {"Restaurantes e bares": 600, "Delivery": 300, "Compras online": 500},
+  "contas_fixas": [
+    {"nome": "Aluguel", "subcategoria": "Aluguel"},
+    {"nome": "Energia", "subcategoria": "Energia"},
+    {"nome": "Internet e celular", "subcategoria": "Telefone e internet"}
+  ],
+  "financiamento": {"ativo": false},
+  "pasta_drive": "Finanças Ana",
+  "painel_url": ""
+}

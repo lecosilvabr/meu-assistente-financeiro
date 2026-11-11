@@ -113,7 +113,7 @@ Valor **negativo** é saída e **positivo** é entrada. Quase todo banco exporta
 
 ### Onde colocar os arquivos
 
-Crie a pasta `entrada/` na raiz do projeto, com **uma subpasta por mês**, no formato `AAAA-MM`:
+Crie a pasta `entrada/` na raiz do projeto, com **uma subpasta por mês**. O nome é livre, mas `AAAA-MM` deixa tudo em ordem:
 
 ```
 entrada/
@@ -146,6 +146,8 @@ O script **refaz tudo do zero** a cada vez, a partir de todas as pastas de `entr
 - se você mudar uma regra, basta rodar de novo que os meses antigos também são recategorizados.
 
 Para ver de novo os dados de exemplo: `python scripts/processar.py --exemplo`.
+
+**Quer ver no celular?** Rode também `python scripts/montar_painel.py`. Ele gera `dados/painel-completo.html`, um arquivo único que abre em qualquer navegador. Ele tem todos os seus dados: guarde só para você.
 
 ## 7. Lendo o painel
 
@@ -182,9 +184,10 @@ UBER|99 ?APP;ambos;Despesa;Transporte;App e transporte público;0
 
 A **primeira regra que bater vence**, de cima para baixo. Coloque as mais específicas antes. Por exemplo, "MERCADOLIVRE" vem antes de "MERCADO" para não cair em Mercado.
 
-**Pessoas que recebem Pix com frequência** (diarista, professor, pet shop): crie uma linha com o nome como aparece no extrato:
+**Suas regras ficam num arquivo separado.** Pessoas que recebem Pix com frequência (diarista, professor, pet shop) e lojas que só você usa vão em **`regras-pessoais.csv`**, na raiz do projeto, no mesmo formato. Esse arquivo é lido antes das regras gerais, não vai para o GitHub e não é apagado quando você baixa uma versão nova do projeto. Veja o exemplo em `exemplo/regras-pessoais.csv`:
 
 ```
+padrao;onde;tipo;categoria;subcategoria;pontual
 MARIA DA SILVA;conta;Despesa;Moradia;Diarista;0
 ```
 
@@ -281,12 +284,12 @@ O que a versão **sem IA** não faz, e o que você precisa fazer à mão:
 | **Não entende contexto.** Não sabe que um Pix para uma pessoa é a diarista, ou que um Pix recebido é a parcela de algo que você vendeu | Crie a regra com o nome da pessoa |
 | **Só lê CSV do C6 de forma nativa.** Outros bancos precisam virar o CSV simples (`data;descricao;valor`) | Ajuste no Excel. Contribuições com leitores de outros bancos são bem-vindas |
 | **Não lê PDF nem print.** Holerite, print do app do financiamento e posição de investimentos são digitados no `config.json` ou nos CSVs | São poucos números e mudam pouco |
-| **O painel fica no computador.** Não há link para abrir no celular de qualquer lugar | Copie a pasta para o Google Drive, iCloud ou OneDrive e abra o `index.html` pelo computador; ou publique numa página privada por sua conta e risco. Nunca publique o seu `dados.js` |
+| **O painel fica no computador.** Não há link para abrir no celular de qualquer lugar | Rode `python scripts/montar_painel.py`: ele gera `dados/painel-completo.html`, um arquivo único com tudo dentro, que abre no celular (mande para você pelo Drive ou iCloud). Ele contém todos os seus lançamentos: nunca publique nem compartilhe |
 | **Agendamento depende do computador ligado** | Use a opção de rodar após inicialização perdida (Windows) ou rode à mão |
 | **Não dá conselho nem resume o mês em texto** | O painel mostra os números; a análise é sua. Quem usa uma IA pode colar o resumo e pedir opinião |
 | **Projeções são simplificadas** (financiamento em SAC sem TR, "melhor data de compra" pela regra da última sexta-feira antes do vencimento) | Confira sempre com o app do banco |
 
-O que você **ganha** usando com o Claude (plano pago) está em [claude/USAR-COM-CLAUDE.md](../claude/USAR-COM-CLAUDE.md).
+O que você **ganha** usando com o Claude (plano pago) está no [manual da versão com Claude](../claude/MANUAL-CLAUDE.md).
 
 ## 13. Privacidade
 

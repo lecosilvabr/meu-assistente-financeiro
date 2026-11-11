@@ -55,16 +55,21 @@ Eu queria saber para onde ia meu dinheiro sem entregar a senha do banco para um 
 - O `.gitignore` já impede que `config.json`, `entrada/`, `dados/` e a sua carteira subam para o GitHub, se você fizer um fork.
 - A única chamada externa é **opcional**: as cotações das ações, pela API gratuita da Alpha Vantage.
 
-## Com ou sem IA
+## Escolha sua versão
 
-| | Sem IA (grátis) | Com Claude (plano pago) |
+O projeto tem **duas versões**, com o mesmo painel e as mesmas regras:
+
+| | 🆓 Sem IA | 🤖 Com Claude (plano pago) |
 |---|---|---|
-| Categorizar lançamentos | Regras em `regras/categorias.csv` (você edita) | O Claude categoriza, pergunta o que não sabe e aprende as regras |
-| Rotina do dia 11 | Agendador do Windows ou cron rodam o script | Tarefa agendada no Claude lê a pasta do Google Drive e atualiza tudo |
-| Painel | `painel/index.html` no seu computador | Dashboard publicado no Claude, abre no celular de qualquer lugar |
-| Pix "a identificar" | Você cria a regra | O Claude pergunta e lembra da resposta |
+| Custo | Grátis | Assinatura do Claude |
+| Onde roda | No seu computador, sem internet | Na nuvem do Claude |
+| Categorizar | Regras em CSV que você ajusta | O Claude pergunta o que não reconhece e grava a regra |
+| Holerite e prints do banco | Você digita os números | Você manda o PDF ou o print |
+| Rotina do dia 11 | Agendador do Windows ou cron | Tarefa agendada no Claude, mesmo com o PC desligado |
+| Painel | Arquivo no computador | Página privada com link, abre no celular |
+| Comece por | [Manual](docs/MANUAL.md) | [Manual da versão com Claude](claude/MANUAL-CLAUDE.md) |
 
-Veja as [limitações da versão sem IA](docs/MANUAL.md#limitações) e o guia [Usar com o Claude](claude/USAR-COM-CLAUDE.md).
+Nas duas, **baixar o extrato e a fatura do banco é manual** (cerca de 5 minutos por mês). Veja as [limitações da versão sem IA](docs/MANUAL.md#limitações) e as [da versão com Claude](claude/MANUAL-CLAUDE.md#8-limitações-e-custos).
 
 ## Bancos suportados
 
@@ -80,10 +85,11 @@ config.exemplo.json   modelo de configuração (copie para config.json)
 regras/               regras de categorização (edite à vontade)
 scripts/processar.py  lê os extratos e gera os dados do painel
 scripts/cotacoes.py   (opcional) busca cotações das ações
+scripts/montar_painel.py  gera o painel num arquivo único (celular, Claude)
 painel/index.html     o painel
 automacao/            rotina do dia 11 para Windows, Mac e Linux
 exemplo/              dados fictícios para testar
-claude/               prompts e modelos para quem usa o Claude
+claude/               versão com Claude: skill, manual, tarefas agendadas
 docs/MANUAL.md        manual completo
 ```
 

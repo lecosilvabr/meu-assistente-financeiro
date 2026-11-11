@@ -13,3 +13,5 @@ cotacoes.csv
 !exemplo/cotacoes.csv
 __pycache__/
 .DS_Store
+regras-pessoais.csv
+!exemplo/regras-pessoais.csv

@@ -9,6 +9,7 @@ dados/dados.js, que o painel (painel/index.html) abre direto no navegador.
 Uso:
     python scripts/processar.py            # usa seus dados (config.json, entrada/)
     python scripts/processar.py --exemplo  # usa os dados fictícios de exemplo/
+    python scripts/processar.py --base PASTA --saida PASTA/dados.js   # outra pasta (skill do Claude)
 
 Só usa a biblioteca padrão do Python 3.8+. Nada sai do seu computador.
 """
@@ -162,11 +163,18 @@ def vencimento_da_fatura(nome, compras, dia):
 def main():
     exemplo = '--exemplo' in sys.argv
     base = os.path.join(RAIZ, 'exemplo') if exemplo else RAIZ
+    if '--base' in sys.argv:            # pasta com config.json e entrada/ (usado pela skill do Claude)
+        base = os.path.abspath(sys.argv[sys.argv.index('--base') + 1])
     cfg_path = os.path.join(base, 'config.json')
     if not os.path.exists(cfg_path):
         sys.exit('Falta o config.json. Copie config.exemplo.json para config.json e preencha com os seus dados.')
     cfg = json.loads(ler_texto(cfg_path))
-    regras = carregar_regras(os.path.join(RAIZ, 'regras', 'categorias.csv'))
+    # regras pessoais (nomes de pessoas, lojas suas) vêm antes das regras gerais e não são sobrescritas
+    # quando você atualiza o projeto. Ficam em regras-pessoais.csv, na mesma pasta do config.json.
+    regras = []
+    for arq in (os.path.join(base, 'regras-pessoais.csv'), os.path.join(RAIZ, 'regras', 'categorias.csv')):
+        if os.path.exists(arq):
+            regras += carregar_regras(arq)
     titular = cfg.get('titular_no_banco', '')
     dia_venc = int(cfg.get('dia_vencimento_fatura', 10))
     lim_pontual = float(cfg.get('valor_gasto_pontual', 1000))
@@ -271,12 +279,14 @@ def main():
              'carteira': ler_csv_opcional('carteira.csv'), 'cotacoes': ler_csv_opcional('cotacoes.csv')}
 
     destino = os.path.join(RAIZ, 'painel', 'dados-exemplo.js') if exemplo else os.path.join(RAIZ, 'dados', 'dados.js')
+    if '--saida' in sys.argv:
+        destino = os.path.abspath(sys.argv[sys.argv.index('--saida') + 1])
     os.makedirs(os.path.dirname(destino), exist_ok=True)
     with open(destino, 'w', encoding='utf-8') as f:
         f.write('// Gerado por scripts/processar.py em ' + dados['gerado_em'] + '. Não edite à mão.\n')
         f.write('window.DADOS = ' + json.dumps(dados, ensure_ascii=False) + ';\n')
     if not exemplo:
-        with open(os.path.join(RAIZ, 'dados', 'lancamentos.csv'), 'w', encoding='utf-8-sig', newline='') as f:
+        with open(os.path.join(os.path.dirname(destino), 'lancamentos.csv'), 'w', encoding='utf-8-sig', newline='') as f:
             w = csv.DictWriter(f, fieldnames=list(lanc[0].keys()) if lanc else ['id'], delimiter=';')
             w.writeheader()
             w.writerows(lanc)
