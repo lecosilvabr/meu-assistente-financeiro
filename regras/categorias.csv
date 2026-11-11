@@ -1,0 +1,56 @@
+padrao;onde;tipo;categoria;subcategoria;pontual
+# Regras de categorização. A primeira que bater vence, de cima para baixo.;;;;;
+# padrao = expressão regular (sem diferenciar maiúsculas). onde = conta, cartao ou ambos.;;;;;
+# tipo = Despesa, Receita ou Interno (Interno fica fora dos gastos: investimentos, transferência entre contas suas, pagamento de fatura).;;;;;
+# pontual = 1 para tirar o gasto das médias (compras grandes fora da rotina).;;;;;
+APLICA[CÇ][AÃ]O DE CDB|RESGATE DE CDB;conta;Interno;Investimentos;CDB;0
+COMPRA DE ATIVO B3|ESTORNO COMPRA ATIVO|CREDITO OPERACAO B3;conta;Interno;Investimentos;Ações B3;0
+Pix recusado|Pix estornado;conta;Interno;Estornos;Pix estornado;0
+PGTO FAT CARTAO;conta;Interno;Pagamento de fatura;Detalhada na fatura;0
+Anuidade|Estorno Tarifa;cartao;Interno;Tarifas estornadas;Anuidade e estorno;0
+# --- Moradia ---;;;;;
+CAIXA - HABITA|HABITACAO;conta;Despesa;Moradia;Financiamento habitacional;0
+LIGHT SERVICOS|ENEL|CEMIG|COPEL|CPFL|LIGHT;conta;Despesa;Moradia;Energia;0
+CEG|COMGAS|NATURGY;conta;Despesa;Moradia;Gás;0
+TELEFONICA|VIVO|CLARO|TIM S|OI S;ambos;Despesa;Moradia;Telefone e internet;0
+CONDOMINIO;conta;Despesa;Moradia;Condomínio;0
+NOME DA DIARISTA;conta;Despesa;Moradia;Diarista;0
+# --- Impostos e taxas ---;;;;;
+RECEITA FEDERAL|DARF;conta;Despesa;Impostos e taxas;Receita Federal;0
+FUNESBOM|IPTU|IPVA|DETRAN;conta;Despesa;Impostos e taxas;Taxas e impostos;0
+CARTORIO|OFICIO DE NOTAS;conta;Despesa;Impostos e taxas;Cartório;0
+# --- Compras online (antes de Mercado, para "MERCADOLIVRE" não cair em Mercado) ---;;;;;
+MERCADOLIVRE|MERCADO LIVRE|AMAZON|SHOPEE|SHEIN|MAGALU|MAGAZINE|ALIEXPRESS|AMERICANAS;ambos;Despesa;Compras;Compras online;0
+# --- Alimentação ---;;;;;
+MERCADO|ASSAI|CARREFOUR|PREZUNIC|GUANABARA|ATACAD|ACOUGUE|HORTIFRUTI|FEIRA|SUPERMERC|PAO DE ACUCAR|EXTRA;ambos;Despesa;Alimentação;Mercado;0
+PADARIA|PANIFICA|CONFEITARIA|BANCA;ambos;Despesa;Alimentação;Padaria e banca;0
+^IFD\*|IFOOD|99 ?FOOD|RAPPI|ZE DELIVERY;ambos;Despesa;Alimentação;Delivery;0
+RESTAURANTE|BAR |BAR$|PIZZA|HAMBURG|SUSHI|LANCHONETE|PASTEL|CHOPP|GALETO|CAFE|MCDONALDS|BURGER KING|OUTBACK;ambos;Despesa;Alimentação;Restaurantes e bares;0
+# --- Transporte ---;;;;;
+PEDAG;ambos;Despesa;Transporte;Pedágio;0
+ESTACION|ESTAPAR|ALLPARK|PARKING;ambos;Despesa;Transporte;Estacionamento;0
+POSTO|ABASTEC|SHELL|IPIRANGA|PETROBRAS|VIBRA|PREMMIA;ambos;Despesa;Transporte;Combustível;0
+UBER|99 ?APP|99 ?POP|METRO|BARCAS|SUPERVIA|BILHETE;ambos;Despesa;Transporte;App e transporte público;0
+# --- Saúde ---;;;;;
+RAIA|DROGASIL|DROGARIA|PACHECO|VENANCIO|PAGUE MENOS|FARMACIA;ambos;Despesa;Saúde;Farmácia;0
+TOTALPASS|GYMPASS|WELLHUB|SMART ?FIT|ACADEMIA;ambos;Despesa;Saúde;Academia;0
+CLINICA|CONSULT|LABORATORIO|HOSPITAL;ambos;Despesa;Saúde;Consultas e exames;0
+# --- Assinaturas (normalmente no cartão) ---;;;;;
+NETFLIX|HBO ?MAX|DISNEY|PRIME VIDEO|GLOBOPLAY|YOUTUBE ?PREMIUM|SPOTIFY|DEEZER|PARAMOUNT|APPLE ?TV;ambos;Despesa;Assinaturas;Streaming;0
+APPLE\.COM|ICLOUD|GOOGLE|MICROSOFT|XBOX|ANTHROPIC|OPENAI|CHATGPT|DROPBOX;ambos;Despesa;Assinaturas;Apps, nuvem e IA;0
+AMAZON PRIME|MELIMAIS|MELI\+;ambos;Despesa;Assinaturas;Clubes de compras;0
+# --- Lazer ---;;;;;
+INGRESS|SYMPLA|TICKET|EVENTIM|CINEMA|CINEMARK|ESTADIO;ambos;Despesa;Lazer;Shows, jogos e eventos;0
+PLAYSTATION|STEAM|NINTENDO;ambos;Despesa;Lazer;Games;0
+# --- Pet ---;;;;;
+PET|COBASI|PETZ|VETERIN;ambos;Despesa;Pet;Pet shop e veterinário;0
+# --- Compras ---;;;;;
+LEROY|TELHANORTE|MADEIRA|TINTAS|MATERIAIS DE CONSTR;ambos;Despesa;Casa;Casa e manutenção;0
+RENNER|C&A|RIACHUELO|ZARA|NETSHOES|CENTAURO|DECATHLON;ambos;Despesa;Compras;Vestuário;0
+# --- Seguros e cuidados ---;;;;;
+SEGURO|SEGURADORA|PORTO SEGURO|TOKIO MARINE;ambos;Despesa;Seguros;Seguros;0
+BARBEARIA|SALAO|CABELEIREIRO;ambos;Despesa;Cuidados pessoais;Beleza e barbearia;0
+SAQUE;conta;Despesa;Saques;Saque em dinheiro;0
+# --- Receitas ---;;;;;
+RECEBIMENTO SALARIO|SALARIO|PAGAMENTO DE SALARIO;conta;Receita;Salário;Salário;0
+RENDIMENTO|DIVIDENDO|JCP;conta;Receita;Outras entradas;Rendimentos;0

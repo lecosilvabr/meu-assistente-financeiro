@@ -1,0 +1,53 @@
+{
+  "_leia_me": "Configuração FICTÍCIA usada pelo exemplo (python scripts/processar.py --exemplo).",
+  "nome": "Ana Exemplo",
+  "nome_assistente": "Meu Assistente Financeiro",
+  "titular_no_banco": "ANA EXEMPLO",
+  "renda_liquida_mensal": 8000.0,
+  "dia_vencimento_fatura": 10,
+  "limite_cartao": 20000.0,
+  "valor_gasto_pontual": 1000.0,
+  "metas_mensais": {
+    "Restaurantes e bares": 600,
+    "Delivery": 300,
+    "Compras online": 500,
+    "Assinaturas": 300
+  },
+  "contas_fixas": [
+    {
+      "nome": "Financiamento / aluguel",
+      "subcategoria": "Financiamento habitacional"
+    },
+    {
+      "nome": "Condomínio",
+      "subcategoria": "Condomínio"
+    },
+    {
+      "nome": "Energia",
+      "subcategoria": "Energia"
+    },
+    {
+      "nome": "Gás",
+      "subcategoria": "Gás"
+    },
+    {
+      "nome": "Internet e celular",
+      "subcategoria": "Telefone e internet"
+    },
+    {
+      "nome": "Diarista",
+      "subcategoria": "Diarista"
+    }
+  ],
+  "financiamento": {
+    "ativo": true,
+    "banco": "Caixa",
+    "data_ref": "2026-11-06",
+    "saldo_devedor": 128500.0,
+    "meses_restantes": 240,
+    "prazo_total": 360,
+    "valor_financiado": 170000.0,
+    "juros_aa": 7.9
+  },
+  "alpha_vantage_chave": ""
+}

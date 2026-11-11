@@ -1,0 +1,41 @@
+{
+  "_leia_me": "Copie este arquivo para config.json e troque os valores pelos seus. O config.json fica só no seu computador (não vai para o GitHub).",
+
+  "nome": "Seu Nome",
+  "nome_assistente": "Meu Assistente Financeiro",
+  "titular_no_banco": "SEU NOME COMPLETO",
+
+  "renda_liquida_mensal": 8000.00,
+  "dia_vencimento_fatura": 10,
+  "limite_cartao": 20000.00,
+  "valor_gasto_pontual": 1000.00,
+
+  "metas_mensais": {
+    "Restaurantes e bares": 600,
+    "Delivery": 300,
+    "Compras online": 500,
+    "Assinaturas": 300
+  },
+
+  "contas_fixas": [
+    {"nome": "Financiamento / aluguel", "subcategoria": "Financiamento habitacional"},
+    {"nome": "Condomínio",              "subcategoria": "Condomínio"},
+    {"nome": "Energia",                 "subcategoria": "Energia"},
+    {"nome": "Gás",                     "subcategoria": "Gás"},
+    {"nome": "Internet e celular",      "subcategoria": "Telefone e internet"},
+    {"nome": "Diarista",                "subcategoria": "Diarista"}
+  ],
+
+  "financiamento": {
+    "ativo": true,
+    "banco": "Caixa",
+    "data_ref": "2026-10-10",
+    "saldo_devedor": 150000.00,
+    "meses_restantes": 280,
+    "prazo_total": 360,
+    "valor_financiado": 200000.00,
+    "juros_aa": 8.5
+  },
+
+  "alpha_vantage_chave": ""
+}

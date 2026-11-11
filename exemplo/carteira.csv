@@ -1,0 +1,5 @@
+ticker;nome;classe;moeda;quantidade;preco_medio
+CDB;CDB banco (reserva);Renda fixa;BRL;1;15000
+BOVA11;ETF Ibovespa;Ações BR;BRL;20;150.00
+ITSA4;Itaúsa;Ações BR;BRL;100;10.50
+IVVB11;ETF S&P 500;Ações EUA;BRL;10;330.00

@@ -1,0 +1,15 @@
+# Seus dados pessoais NUNCA vão para o GitHub
+config.json
+entrada/
+dados/
+ajustes.csv
+carteira.csv
+cotacoes.csv
+# mas os arquivos de exemplo (fictícios) vão
+!exemplo/config.json
+!exemplo/entrada/
+!exemplo/ajustes.csv
+!exemplo/carteira.csv
+!exemplo/cotacoes.csv
+__pycache__/
+.DS_Store

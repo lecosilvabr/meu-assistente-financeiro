@@ -1,0 +1,94 @@
+# Meu Assistente Financeiro
+
+Um painel de finanças pessoais que **roda no seu computador**, sem servidor, sem cadastro, sem mensalidade e **sem precisar de IA paga**.
+
+Você baixa o extrato da conta e a fatura do cartão, joga numa pasta, roda um comando, e o painel mostra:
+
+- **Resultado do mês:** quanto entrou, quanto saiu e se sobrou ou faltou
+- **Gastos por categoria**, com média, metas e os gastos fora da rotina separados
+- **Cartão:** faturas, parcelas que ainda vão vencer, limite livre e melhor dia de compra
+- **Contas fixas:** o que já foi pago em cada mês
+- **Financiamento imobiliário:** saldo, quanto da parcela é juros e um simulador de amortização extra
+- **Investimentos:** carteira, resultado e quantos meses a reserva de emergência cobre
+
+Tudo com tema claro/escuro, botão para esconder os valores (para tirar print) e layout que funciona no celular.
+
+![Visão geral](docs/img/visao-geral.png)
+
+| Simulador do financiamento | No celular |
+|---|---|
+| ![Financiamento](docs/img/financiamento.png) | ![Celular](docs/img/celular.png) |
+
+> As telas acima usam **dados fictícios** que vêm com o projeto.
+
+## Comece em 3 minutos
+
+1. Instale o [Python 3](https://www.python.org/downloads/). No Windows, marque **"Add Python to PATH"** na instalação.
+2. Baixe este projeto: botão verde **Code → Download ZIP**, e descompacte.
+3. Abra o arquivo `painel/index.html` no navegador. Ele já abre com os dados de exemplo.
+
+Para usar com os **seus** dados:
+
+```bash
+# 1. copie o modelo de configuração e troque o nome, a renda etc.
+cp config.exemplo.json config.json          # Windows: copy config.exemplo.json config.json
+
+# 2. crie a pasta do mês e coloque o extrato e a fatura (CSV) dentro
+#    entrada/2026-11/extrato.csv
+#    entrada/2026-11/Fatura_2026-12-10.csv
+
+# 3. processe
+python scripts/processar.py
+
+# 4. abra painel/index.html no navegador
+```
+
+O passo a passo completo, com prints, está no **[Manual](docs/MANUAL.md)**.
+
+## Por que existe
+
+Eu queria saber para onde ia meu dinheiro sem entregar a senha do banco para um app e sem montar planilha na mão todo mês. Montei um assistente para mim e resolvi abrir o modelo, com nomes genéricos, para quem quiser usar e adaptar.
+
+## Seus dados ficam com você
+
+- Nada é enviado para a internet. O painel é um arquivo HTML que lê um arquivo do seu próprio computador.
+- O `.gitignore` já impede que `config.json`, `entrada/`, `dados/` e a sua carteira subam para o GitHub, se você fizer um fork.
+- A única chamada externa é **opcional**: as cotações das ações, pela API gratuita da Alpha Vantage.
+
+## Com ou sem IA
+
+| | Sem IA (grátis) | Com Claude (plano pago) |
+|---|---|---|
+| Categorizar lançamentos | Regras em `regras/categorias.csv` (você edita) | O Claude categoriza, pergunta o que não sabe e aprende as regras |
+| Rotina do dia 11 | Agendador do Windows ou cron rodam o script | Tarefa agendada no Claude lê a pasta do Google Drive e atualiza tudo |
+| Painel | `painel/index.html` no seu computador | Dashboard publicado no Claude, abre no celular de qualquer lugar |
+| Pix "a identificar" | Você cria a regra | O Claude pergunta e lembra da resposta |
+
+Veja as [limitações da versão sem IA](docs/MANUAL.md#limitações) e o guia [Usar com o Claude](claude/USAR-COM-CLAUDE.md).
+
+## Bancos suportados
+
+- **C6 Bank:** extrato da conta e fatura do cartão em CSV, lidos direto.
+- **Qualquer outro banco:** converta o extrato para um CSV simples com as colunas `data;descricao;valor` (valor negativo = saída). O manual explica como.
+
+Quer suporte nativo ao seu banco? Abra uma *issue* com um exemplo do CSV (com os valores apagados) ou mande um *pull request*.
+
+## Estrutura
+
+```
+config.exemplo.json   modelo de configuração (copie para config.json)
+regras/               regras de categorização (edite à vontade)
+scripts/processar.py  lê os extratos e gera os dados do painel
+scripts/cotacoes.py   (opcional) busca cotações das ações
+painel/index.html     o painel
+automacao/            rotina do dia 11 para Windows, Mac e Linux
+exemplo/              dados fictícios para testar
+claude/               prompts e modelos para quem usa o Claude
+docs/MANUAL.md        manual completo
+```
+
+## Licença
+
+MIT: use, copie, adapte e compartilhe. Isto não é recomendação financeira; as projeções (como a do financiamento) são estimativas.
+
+Feito por Leandro Silva, com a ajuda do Claude.
