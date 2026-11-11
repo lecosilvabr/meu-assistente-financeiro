@@ -91,6 +91,7 @@ automacao/            rotina do dia 11 para Windows, Mac e Linux
 exemplo/              dados fictícios para testar
 claude/               versão com Claude: skill, manual, tarefas agendadas
 docs/MANUAL.md        manual completo
+AGENTS.md             instruções para agentes de IA que forem alterar o projeto
 ```
 
 ## Licença
