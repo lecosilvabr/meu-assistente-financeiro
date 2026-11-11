@@ -107,6 +107,8 @@ Exemplos do que pedir numa conversa do Projeto:
 
 Toda mudança fica salva no Projeto, e o painel é publicado de novo no **mesmo link**.
 
+> Quer alterar o **código** do projeto (e não só o seu painel), por exemplo para ler o extrato de outro banco? Use um assistente de programação com o [`AGENTS.md`](../AGENTS.md) da raiz do repositório. Veja a [seção 15 do manual](../docs/MANUAL.md#15-adaptar-o-projeto-ou-contribuir-com-ou-sem-ia).
+
 ## 8. Limitações e custos
 
 - **Precisa de plano pago** para skills, conectores, tarefas agendadas e páginas publicadas. Confira os recursos do seu plano.

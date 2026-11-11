@@ -78,6 +78,12 @@ Nas duas, **baixar o extrato e a fatura do banco é manual** (cerca de 5 minutos
 
 Quer suporte nativo ao seu banco? Abra uma *issue* com um exemplo do CSV (com os valores apagados) ou mande um *pull request*.
 
+## Adaptar e contribuir
+
+Quer mudar o código, criar o leitor do seu banco ou mandar uma melhoria? As regras do projeto estão no **[AGENTS.md](AGENTS.md)**: mapa das pastas, como testar com os dados de exemplo, padrões de código e regras de negócio.
+
+Assistentes de programação com IA (Claude Code, Codex, Copilot, Cursor) leem esse arquivo sozinhos, então basta abrir a pasta do projeto e pedir a mudança. Detalhes e cuidados com seus dados na [seção 15 do manual](docs/MANUAL.md#15-adaptar-o-projeto-ou-contribuir-com-ou-sem-ia).
+
 ## Estrutura
 
 ```

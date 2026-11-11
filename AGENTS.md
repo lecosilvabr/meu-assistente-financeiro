@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Instruções para agentes de IA (Claude Code, Codex, Copilot, Cursor etc.) que forem ler ou alterar este repositório. Pessoas devem começar pelo [README](README.md) e pelo [Manual](docs/MANUAL.md).
+Instruções para agentes de IA (Claude Code, Codex, Copilot, Cursor etc.) que forem ler ou alterar este repositório. Pessoas devem começar pelo [README](README.md) e pelo [Manual](docs/MANUAL.md); a seção 15 do manual explica este arquivo para quem não programa.
 
 ## O que é o projeto
 

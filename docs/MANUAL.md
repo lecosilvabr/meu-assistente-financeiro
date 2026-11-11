@@ -18,6 +18,7 @@ Este manual é para quem nunca programou. Se você sabe abrir uma pasta e copiar
 12. [Limitações](#limitações)
 13. [Privacidade](#13-privacidade)
 14. [Problemas comuns](#14-problemas-comuns)
+15. [Adaptar o projeto ou contribuir (com ou sem IA)](#15-adaptar-o-projeto-ou-contribuir-com-ou-sem-ia)
 
 ---
 
@@ -109,7 +110,7 @@ data;descricao;valor
 
 Valor **negativo** é saída e **positivo** é entrada. Quase todo banco exporta para Excel ou CSV. Abra o arquivo no Excel ou no Google Planilhas, deixe só essas três colunas, renomeie os títulos e salve como CSV.
 
-> Se o seu banco é muito usado, peça suporte nativo abrindo uma *issue* no GitHub com um exemplo do arquivo (apague nomes e valores).
+> Se o seu banco é muito usado, peça suporte nativo abrindo uma *issue* no GitHub com um exemplo do arquivo (apague nomes e valores). Se quiser criar o leitor do seu banco, veja a [seção 15](#15-adaptar-o-projeto-ou-contribuir-com-ou-sem-ia).
 
 ### Onde colocar os arquivos
 
@@ -282,7 +283,7 @@ O que a versão **sem IA** não faz, e o que você precisa fazer à mão:
 | **Baixar os arquivos do banco é manual.** Não há conexão automática com o banco (Open Finance para pessoa física não tem acesso gratuito para scripts caseiros) | Lembrete no dia 11; leva uns 5 minutos |
 | **Categorizar exige criar regras.** O script só reconhece o que está em `regras/categorias.csv`. Nomes novos ficam em "A identificar" | Use a aba A identificar e crie a regra uma vez. Com o tempo, quase nada fica pendente |
 | **Não entende contexto.** Não sabe que um Pix para uma pessoa é a diarista, ou que um Pix recebido é a parcela de algo que você vendeu | Crie a regra com o nome da pessoa |
-| **Só lê CSV do C6 de forma nativa.** Outros bancos precisam virar o CSV simples (`data;descricao;valor`) | Ajuste no Excel. Contribuições com leitores de outros bancos são bem-vindas |
+| **Só lê CSV do C6 de forma nativa.** Outros bancos precisam virar o CSV simples (`data;descricao;valor`) | Ajuste no Excel. Contribuições com leitores de outros bancos são bem-vindas (seção 15) |
 | **Não lê PDF nem print.** Holerite, print do app do financiamento e posição de investimentos são digitados no `config.json` ou nos CSVs | São poucos números e mudam pouco |
 | **O painel fica no computador.** Não há link para abrir no celular de qualquer lugar | Rode `python scripts/montar_painel.py`: ele gera `dados/painel-completo.html`, um arquivo único com tudo dentro, que abre no celular (mande para você pelo Drive ou iCloud). Ele contém todos os seus lançamentos: nunca publique nem compartilhe |
 | **Agendamento depende do computador ligado** | Use a opção de rodar após inicialização perdida (Windows) ou rode à mão |
@@ -313,3 +314,20 @@ O que você **ganha** usando com o Claude (plano pago) está no [manual da vers�
 **A fatura caiu no mês errado**: confira se o nome do arquivo tem a data de vencimento (`Fatura_2026-12-10.csv`). Sem a data, o script estima pelo `dia_vencimento_fatura`.
 
 **Ficou com dúvida ou achou um erro?** Abra uma *issue* no GitHub do projeto.
+
+## 15. Adaptar o projeto ou contribuir (com ou sem IA)
+
+Para **usar** o assistente você não precisa mexer no código. Esta seção é para quem quer mudar o projeto: ler o extrato de outro banco, criar uma aba no painel, corrigir um erro ou mandar uma melhoria.
+
+O arquivo **[`AGENTS.md`](../AGENTS.md)**, na raiz do projeto, reúne as regras para isso: o que é cada pasta, como testar com os dados de exemplo, os padrões do código e as regras de negócio que não podem quebrar.
+
+- **Se você usa um assistente de programação com IA** (Claude Code, Codex, Copilot, Cursor e similares): abra a pasta do projeto nele e peça a mudança em português, por exemplo "adicione um leitor para o extrato do banco X". Essas ferramentas leem o `AGENTS.md` sozinhas antes de alterar qualquer coisa. Se a sua não ler, peça: "leia o AGENTS.md antes de começar".
+- **Se você programa sem IA:** o `AGENTS.md` serve igual, como guia de contribuição.
+
+Cuidados:
+
+- **Nunca entregue seus extratos reais a uma IA sem querer.** Para desenvolver, use os dados fictícios da pasta `exemplo/` (`python scripts/processar.py --exemplo`). Ao abrir a pasta do projeto numa ferramenta de IA, ela pode ler o que estiver em `entrada/` e no `config.json`.
+- Confira o resultado no painel antes de confiar: IA também erra.
+- Para mandar a melhoria ao projeto, abra um *pull request* no GitHub só com código e dados fictícios.
+
+> O `AGENTS.md` não é a versão com Claude. Ele orienta quem **altera o código**. Para o Claude **operar** o assistente por você (processar o mês, publicar o painel), veja o [manual da versão com Claude](../claude/MANUAL-CLAUDE.md).
