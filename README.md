@@ -29,6 +29,7 @@ Tudo com tema claro/escuro, botão para esconder os valores (para tirar print) e
 - **Visão geral redesenhada:** quanto você já gastou no dia a dia contra o teto do mês, quanto ainda dá para gastar por dia, metas, resultado, cartão e uma linha do tempo com salário, contas e vencimentos.
 - **Visual padronizado:** escala de espaçamento de 8 pontos, cards de três tamanhos, botões de 48 px e tipografia em escala em todas as abas.
 - **Celular:** menu em barra de abas embaixo, com os itens de longo prazo em "Mais".
+- **Cards clicáveis:** cada card da Visão geral abre a aba com o detalhe (gastos, cartão, contas fixas, investimentos ou financiamento).
 - **Regras de interface no `AGENTS.md`**, para que qualquer pessoa (ou IA) que altere o painel mantenha o mesmo padrão.
 
 Já usa a versão 1.0? Seus dados e regras continuam valendo: veja [como atualizar](docs/MANUAL.md#16-atualizar-para-uma-versão-nova). Lista completa em [CHANGELOG.md](CHANGELOG.md).

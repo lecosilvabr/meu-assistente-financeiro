@@ -18,6 +18,7 @@ Nova **Visão geral** e um padrão visual único para todo o painel.
 - **Meu cartão:** fatura do mês, uso do limite (com as parcelas futuras), vencimento e melhor dia de compra no mesmo card.
 - **Linha do tempo:** salário, contas fixas pagas, melhor dia de compra e vencimento da fatura, em ordem de data.
 - **Longo prazo:** reserva de emergência, investimentos e financiamento ficam numa seção própria, abaixo do mês.
+- **Cards que levam à aba certa:** tocar num card da Visão geral abre a aba relacionada (Dia a dia, Metas e Resultado → Gastos; Meu cartão → Cartão; Linha do tempo → Contas fixas; Reserva e Investimentos → Investimentos; Financiamento → Financiamento). Cada card mostra um "Ver ›" no canto, ganha borda azul ao passar o mouse e também abre com Enter ou espaço no teclado.
 - Saíram da Visão geral o checklist de contas (continua na aba **Contas fixas**) e o card de Moradia.
 
 ### Visual e usabilidade

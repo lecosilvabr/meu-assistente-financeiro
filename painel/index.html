@@ -47,6 +47,12 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Hel
 .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:var(--spacing-gap)}
 .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:var(--spacing-gap)}
 .c{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--spacing-card);display:flex;flex-direction:column;gap:var(--space-3);min-width:0}
+.c.ir{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .15s}
+.c.ir:hover{border-color:var(--accent);box-shadow:0 4px 16px rgba(47,91,234,.12)}
+.c.ir:active{transform:scale(.99)}
+.c.ir:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.irl{font-size:14px;color:var(--accent);white-space:nowrap;display:inline-flex;align-items:center;gap:var(--space-1)}
+.irl::after{content:"›";font-size:18px;line-height:1}
 .c.destaque{padding:var(--spacing-destaque);border:2px solid var(--accent);gap:var(--space-4)}
 .c h2{margin:0;font-size:16px;font-weight:600}.c h3{margin:0;font-size:14px;font-weight:500;color:var(--muted)}
 .sub{display:block;font-size:12px;color:var(--muted);margin-top:var(--space-1)}
@@ -182,20 +188,20 @@ input[type=range]{width:100%;accent-color:var(--accent)}
   <!-- VISÃO GERAL -->
   <div class="tab" data-tab="visao">
     <div class="g2">
-      <section class="c destaque" id="v-dia"></section>
-      <section class="c"><div class="hr"><h2>Metas do mês</h2><button type="button" class="lnk" data-ir="gastos">Ver gastos</button></div><div id="v-metas" class="metas"></div><div class="foot" id="v-metas-n"></div></section>
+      <section class="c destaque ir" id="v-dia" data-ir="gastos" tabindex="0" title="Abrir Gastos"></section>
+      <section class="c ir" data-ir="gastos" tabindex="0" title="Abrir Gastos"><div class="hr"><h2>Metas do mês</h2><span class="irl">Ver gastos</span></div><div id="v-metas" class="metas"></div><div class="foot" id="v-metas-n"></div></section>
     </div>
     <div class="g2">
-      <section class="c"><div class="g"><h2 id="v-res-t">Resultado do mês</h2><span id="v-res-n"></span></div><div id="v-res"></div></section>
-      <section class="c"><div class="hr"><h2>Meu cartão</h2><button type="button" class="lnk" data-ir="cartao">Ver faturas</button></div><div id="v-fat"></div></section>
+      <section class="c ir" data-ir="gastos" tabindex="0" title="Abrir Gastos"><div class="g"><div class="hr"><h2 id="v-res-t">Resultado do mês</h2><span class="irl">Ver gastos</span></div><span id="v-res-n"></span></div><div id="v-res"></div></section>
+      <section class="c ir" data-ir="cartao" tabindex="0" title="Abrir Cartão"><div class="hr"><h2>Meu cartão</h2><span class="irl">Ver faturas</span></div><div id="v-fat"></div></section>
     </div>
-    <section class="c"><h2>Linha do tempo</h2><div id="v-tl"></div></section>
+    <section class="c ir" data-ir="contas" tabindex="0" title="Abrir Contas fixas"><div class="hr"><h2>Linha do tempo</h2><span class="irl">Ver contas fixas</span></div><div id="v-tl"></div></section>
     <div class="sec">
       <h2>Longo prazo</h2>
       <div class="g3">
-        <section class="c"><h3>Reserva de emergência</h3><div id="v-resv"></div></section>
-        <section class="c"><h3>Investimentos</h3><div id="v-pat"></div></section>
-        <section class="c" id="v-fin-c"><h3>Financiamento</h3><div id="v-fin"></div></section>
+        <section class="c ir" data-ir="invest" tabindex="0" title="Abrir Investimentos"><div class="hr"><h3>Reserva de emergência</h3><span class="irl">Ver</span></div><div id="v-resv"></div></section>
+        <section class="c ir" data-ir="invest" tabindex="0" title="Abrir Investimentos"><div class="hr"><h3>Investimentos</h3><span class="irl">Ver</span></div><div id="v-pat"></div></section>
+        <section class="c ir" id="v-fin-c" data-ir="financ" tabindex="0" title="Abrir Financiamento"><div class="hr"><h3>Financiamento</h3><span class="irl">Ver</span></div><div id="v-fin"></div></section>
       </div>
     </div>
   </div>
@@ -328,7 +334,11 @@ function iniciar() {
     window.scrollTo(0, 0);
   };
   document.querySelectorAll('.menu button[data-tab]').forEach((b) => b.onclick = () => abrir(b.dataset.tab));
-  document.querySelectorAll('[data-ir]').forEach((b) => b.onclick = () => abrir(b.dataset.ir));
+  // cards da Visão geral levam à aba correspondente (clique, toque, Enter ou espaço)
+  document.querySelectorAll('[data-ir]').forEach((b) => {
+    b.onclick = () => abrir(b.dataset.ir);
+    b.onkeydown = (ev) => { if ((ev.key === 'Enter' || ev.key === ' ') && ev.target === b) { ev.preventDefault(); abrir(b.dataset.ir); } };
+  });
   $('bmais').onclick = () => { const on = $('mais').classList.toggle('aberto'); $('bmais').setAttribute('aria-expanded', on); };
   const temFin = !!(CFG.financiamento && CFG.financiamento.ativo);
   if (!temFin) document.querySelectorAll('.menu [data-tab=financ]').forEach((b) => { b.hidden = true; });

@@ -155,6 +155,8 @@ Para ver de novo os dados de exemplo: `python scripts/processar.py --exemplo`.
 
 ## 7. Lendo o painel
 
+Toque em qualquer card da Visão geral para abrir a aba com o detalhe: Dia a dia, Metas e Resultado abrem **Gastos**; Meu cartão abre **Cartão**; a Linha do tempo abre **Contas fixas**; Reserva e Investimentos abrem **Investimentos**; Financiamento abre **Financiamento**.
+
 No topo: o **mês** (setas ‹ › ou a lista) e o **olho** que borra os valores (bom para prints). O menu separa as abas do dia a dia (**Hoje**) das de **Longo prazo**, onde fica também o **tema** claro/escuro. No celular, o menu vira uma barra de abas embaixo; Contas fixas, A identificar, Investimentos, Financiamento e o tema ficam em **Mais**.
 
 | Aba | O que mostra |
