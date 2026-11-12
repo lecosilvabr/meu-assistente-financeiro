@@ -152,11 +152,11 @@ Para ver de novo os dados de exemplo: `python scripts/processar.py --exemplo`.
 
 ## 7. Lendo o painel
 
-No topo: o **mês** (setas ‹ › ou a lista), o **olho** que borra os valores (bom para prints) e, no menu, o **tema** claro/escuro.
+No topo: o **mês** (setas ‹ › ou a lista) e o **olho** que borra os valores (bom para prints). O menu separa as abas do dia a dia (**Hoje**) das de **Longo prazo**, onde fica também o **tema** claro/escuro. No celular, o menu vira uma barra de abas embaixo; Contas fixas, A identificar, Investimentos, Financiamento e o tema ficam em **Mais**.
 
 | Aba | O que mostra |
 |---|---|
-| **Visão geral** | Resultado do mês (entrou − gasto recorrente), contas fixas pagas, fatura do mês, peso da moradia na renda e patrimônio |
+| **Visão geral** | **Dia a dia e cartão:** o que você gastou fora das contas fixas, comparado com o teto do mês (o que entrou menos contas fixas, parcelas, assinaturas e seguros) e com o ritmo ideal; no mês em andamento, quanto ainda dá para gastar por dia. **Metas do mês** (do `config.json`), **resultado**, **cartão** (fatura, uso do limite, vencimento e melhor dia de compra), **linha do tempo** (salário, contas pagas, melhor dia de compra e vencimento da fatura) e, em **Longo prazo**, reserva de emergência, investimentos e financiamento |
 | **Gastos** | Barras por mês (recorrente × pontual), categorias do mês comparadas com a média e as metas, lista de lançamentos |
 | **Cartão** | Faturas por vencimento, divisão fixo/variável/pontual, compras da fatura, parcelas futuras, limite livre e melhor data de compra |
 | **Contas fixas** | Tabela mês a mês: verde = paga |

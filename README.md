@@ -4,6 +4,7 @@ Um painel de finanças pessoais que **roda no seu computador**, sem servidor, se
 
 Você baixa o extrato da conta e a fatura do cartão, joga numa pasta, roda um comando, e o painel mostra:
 
+- **Visão geral do mês:** quanto você já gastou no dia a dia contra o teto para fechar no zero, metas, resultado, cartão e uma linha do tempo com salário, contas e vencimentos
 - **Resultado do mês:** quanto entrou, quanto saiu e se sobrou ou faltou
 - **Gastos por categoria**, com média, metas e os gastos fora da rotina separados
 - **Cartão:** faturas, parcelas que ainda vão vencer, limite livre e melhor dia de compra
@@ -11,7 +12,7 @@ Você baixa o extrato da conta e a fatura do cartão, joga numa pasta, roda um c
 - **Financiamento imobiliário:** saldo, quanto da parcela é juros e um simulador de amortização extra
 - **Investimentos:** carteira, resultado e quantos meses a reserva de emergência cobre
 
-Tudo com tema claro/escuro, botão para esconder os valores (para tirar print) e layout que funciona no celular.
+Tudo com tema claro/escuro, botão para esconder os valores (para tirar print) e layout que funciona no celular, com barra de abas embaixo.
 
 ![Visão geral](docs/img/visao-geral.png)
 

@@ -76,6 +76,7 @@ Checklist antes de concluir uma alteração:
 - Um único `index.html`, sem framework, sem CDN e sem chamadas de rede. Tem que funcionar offline, aberto por duplo clique (`file://`).
 - Os dados chegam em `window.DADOS`. Mantenha o bloco `// <carregador> ... // </carregador>` intacto: `montar_painel.py` depende dele.
 - Toda tela nova precisa funcionar em tema claro/escuro, no celular e com o botão de ocultar valores.
+- Espaçamentos, alturas e raios seguem a seção "UI/UX Design System" abaixo.
 
 **Dados e regras**
 
@@ -84,6 +85,20 @@ Checklist antes de concluir uma alteração:
 - **A primeira regra que bate vence.** A ordem importa: regra específica antes da genérica (ex.: `MERCADOLIVRE` antes de `MERCADO`). `regras-pessoais.csv` é lido antes de `regras/categorias.csv`.
 - `regras/categorias.csv` só recebe regras úteis para qualquer pessoa (lojas e serviços conhecidos). Nome de pessoa ou comércio local vai em `regras-pessoais.csv`.
 - Opção nova de configuração entra em `config.exemplo.json` e em `exemplo/config.json`, sempre lida com `cfg.get(chave, padrao)` para não quebrar o `config.json` de quem já usa.
+
+## UI/UX Design System
+
+O painel segue uma escala de espaçamento de 8 pontos. Os tokens ficam no início do `<style>` de `painel/index.html` (`--space-*`, `--radius-*`, `--altura-controle` e os semânticos `--spacing-*`).
+
+- Use a escala de 8pt: 8, 16, 24, 32, 48 px. Passos de 4px só para ajuste fino (12px é aceito como meio passo).
+- Não introduza valores arbitrários sem justificativa. Use os tokens existentes; não crie token novo se um existente serve.
+- Padronize alturas de componentes equivalentes: 48px para botões, itens de menu, abas e linhas tocáveis; 40px para controles secundários (chips, segmentos); 8px para barras.
+- Preserve a hierarquia por proximidade: espaço menor dentro de um grupo (8px entre título e número), maior entre grupos (16 a 24px dentro do cartão, 24px entre cartões, uma seção a mais de distância entre blocos).
+- Cartões: compacto 16px, padrão 24px, destaque 32px (um por tela, borda de 2px na cor de destaque). No celular a densidade cai um passo (página e cartões 16px, destaque 24px), pelos tokens dentro do `@media`.
+- Raios: 6px (pequeno), 10px (botões e avisos), 16px (cartões). Tipografia: 12, 14, 16, 18, 24, 30 e 36px.
+- Fora da escala, de propósito: bordas de 1 ou 2px, ícones, traços de gráfico e ajustes ópticos de 1 a 2px. Larguras de coluna seguem fluidas (flex/grid).
+- Mantenha a consistência entre telas e respeite acessibilidade (área de toque de 48px, contraste de texto de pelo menos 4,5:1).
+- Não altere o design system sem necessidade. A escala não substitui conferir a tela no desktop e no celular.
 
 ## Regras de negócio que não podem quebrar
 
