@@ -25,6 +25,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Hel
 .mlbl{font-size:12px;color:var(--muted);padding:0 var(--space-3) var(--space-1)}
 .menu button,.tools button{font:inherit;text-align:left;border:0;background:transparent;color:var(--text);height:var(--altura-controle);padding:0 var(--space-3);border-radius:var(--radius-md);cursor:pointer}
 .menu button:hover{background:var(--soft)}.menu button[aria-current=page]{background:var(--soft2);font-weight:600}
+.ver{font-size:12px;color:var(--muted);padding:var(--space-2) var(--space-3) 0}
 .tools button{width:100%;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);background:var(--soft)}
 .main{flex:999 1 560px;min-width:0;display:flex;flex-direction:column;gap:var(--spacing-gap)}
 .head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-3)}
@@ -164,6 +165,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
       <button data-tab="invest">Investimentos</button>
       <button data-tab="financ">Financiamento</button>
       <div class="tools"><button type="button" id="tema"><span>Tema</span><b id="temaL">Claro</b></button></div>
+      <span class="ver" id="versao">versão —</span>
     </div>
   </nav>
 </aside>
@@ -277,6 +279,7 @@ input[type=range]{width:100%;accent-color:var(--accent)}
 // </carregador>
 
 function iniciar() {
+  const VERSAO = '1.1.0';   // atualize junto com o arquivo VERSION e o CHANGELOG.md
   const D = window.DADOS, CFG = D.config || {}, L = D.lancamentos || [];
   const MC = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
   const MF = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
@@ -302,6 +305,7 @@ function iniciar() {
   $('logo').textContent = (CFG.nome_assistente || 'MA').split(/\s+/).filter((w) => w.length > 2).slice(0, 2).map((w) => w[0].toUpperCase()).join('') || 'MA';
   document.title = (CFG.nome_assistente || 'Meu Assistente Financeiro') + (CFG.nome ? ' · ' + CFG.nome : '');
   $('logoM').textContent = $('logo').textContent;
+  $('versao').textContent = 'Versão ' + VERSAO;
   $('gerado').textContent = 'Atualizado em ' + D.gerado_em.slice(8, 10) + '/' + D.gerado_em.slice(5, 7);
   $('aviso').hidden = !D.exemplo;
 
