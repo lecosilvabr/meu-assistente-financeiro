@@ -4,6 +4,8 @@ Esta é a versão para quem assina um **plano pago do Claude**. O código e as r
 
 > Testado em novembro de 2026. Os recursos do Claude (skills, Projetos, conectores, tarefas agendadas e páginas publicadas) dependem do plano e mudam com frequência. Se algum nome de menu estiver diferente, procure na [central de ajuda](https://support.claude.com).
 
+> **Versão 1.1.0** (12/11/2026): nova Visão geral e visual padronizado. Veja as [Novidades](../CHANGELOG.md) e [como atualizar a skill](#atualizar-a-skill).
+
 **Sumário**
 
 1. [O que você ganha em relação à versão sem IA](#1-o-que-você-ganha)
@@ -135,3 +137,14 @@ Se o seu plano não tem skills, dá para usar quase tudo mesmo assim:
 2. Nas instruções do Projeto, troque "Use sempre a skill assistente-financeiro" por "Siga o SKILL.md deste Projeto, usando os arquivos dele no lugar da pasta da skill".
 3. Se o Claude não conseguir rodar os arquivos direto do Projeto, anexe-os na conversa junto com os extratos.
 4. O resto do manual vale igual.
+
+## Atualizar a skill
+
+Quando sair uma versão nova (veja o [CHANGELOG](../CHANGELOG.md)):
+
+1. Baixe o `claude/assistente-financeiro.zip` novo deste repositório.
+2. No Claude, em **Configurações → Capacidades → Skills**, remova a skill antiga e envie o zip novo.
+3. No seu Projeto, peça: "atualize o painel para a versão nova". O Claude republica o painel no **mesmo link**, com os seus dados.
+
+Seus lançamentos, regras e configurações ficam no Projeto e não são apagados pela atualização. Se você usa o Plano B (sem skills), troque os arquivos do Projeto pelos desta versão.
+

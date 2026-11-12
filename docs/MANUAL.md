@@ -2,6 +2,8 @@
 
 Este manual é para quem nunca programou. Se você sabe abrir uma pasta e copiar um arquivo, consegue usar.
 
+> **Versão 1.1.0** (12/11/2026). O que mudou: [Novidades](../CHANGELOG.md). Já usa uma versão anterior? Veja a [seção 16](#16-atualizar-para-uma-versão-nova).
+
 **Sumário**
 
 1. [O que é e como funciona](#1-o-que-é-e-como-funciona)
@@ -19,6 +21,7 @@ Este manual é para quem nunca programou. Se você sabe abrir uma pasta e copiar
 13. [Privacidade](#13-privacidade)
 14. [Problemas comuns](#14-problemas-comuns)
 15. [Adaptar o projeto ou contribuir (com ou sem IA)](#15-adaptar-o-projeto-ou-contribuir-com-ou-sem-ia)
+16. [Atualizar para uma versão nova](#16-atualizar-para-uma-versão-nova)
 
 ---
 
@@ -331,3 +334,16 @@ Cuidados:
 - Para mandar a melhoria ao projeto, abra um *pull request* no GitHub só com código e dados fictícios.
 
 > O `AGENTS.md` não é a versão com Claude. Ele orienta quem **altera o código**. Para o Claude **operar** o assistente por você (processar o mês, publicar o painel), veja o [manual da versão com Claude](../claude/MANUAL-CLAUDE.md).
+
+## 16. Atualizar para uma versão nova
+
+A versão que você tem aparece no rodapé do menu do painel e no arquivo `VERSION`. As novidades de cada versão estão no [CHANGELOG](../CHANGELOG.md).
+
+1. Baixe a versão nova (**Code → Download ZIP**) e descompacte numa pasta nova.
+2. Copie da pasta antiga para a nova: `config.json`, a pasta `entrada/`, a pasta `dados/` e, se tiver, `regras-pessoais.csv`, `ajustes.csv`, `carteira.csv` e `cotacoes.csv`.
+3. Rode `python scripts/processar.py` na pasta nova e abra `painel/index.html`.
+
+Seus arquivos nunca são sobrescritos pela atualização, porque não fazem parte do projeto. Se você mudou algo em `regras/categorias.csv`, copie essas linhas para o `regras-pessoais.csv` antes de trocar de pasta.
+
+**Da 1.0 para a 1.1:** só o painel e a documentação mudaram. O `config.json`, as regras e os extratos continuam iguais. As metas da Visão geral vêm do bloco `metas_mensais` do `config.json`: se ele estiver vazio, o card de metas mostra como preencher.
+

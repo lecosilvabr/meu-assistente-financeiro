@@ -35,6 +35,7 @@ Este repositório é público e só pode conter **dados fictícios**.
 | `claude/` | Versão com Claude: `skill/assistente-financeiro/SKILL.md`, manual, tarefas agendadas e o zip da skill |
 | `claude/assistente-financeiro.zip` | **Gerado** por `claude/empacotar_skill.py` |
 | `docs/MANUAL.md`, `docs/img/` | Manual do usuário e capturas de tela (com dados fictícios) |
+| `CHANGELOG.md`, `VERSION` | Novidades por versão e o número da versão atual (também no rodapé do menu do painel) |
 
 ## O que ler antes de mexer
 
@@ -109,6 +110,16 @@ O painel segue uma escala de espaçamento de 8 pontos. Os tokens ficam no iníci
 - Lançamento sem regra vira "A identificar" (nunca é descartado nem adivinhado).
 - Cotações usam só o plano gratuito da Alpha Vantage (25 consultas por dia). Não use parâmetros pagos.
 - Formatos lidos: extrato e fatura do C6 e o CSV genérico `data;descricao;valor`. Banco novo entra como um leitor `ler_<tipo>_<banco>()` mais a detecção pelo cabeçalho em `main()`, com um arquivo fictício em `exemplo/entrada/`.
+
+## Versões
+
+O projeto segue versão `MAIOR.MENOR.CORREÇÃO` (ex.: 1.1.0): correção = conserto sem mudança visível; menor = funcionalidade ou tela nova, compatível com os dados de quem já usa; maior = algo que exige o usuário mudar `config.json`, regras ou arquivos.
+
+Ao lançar uma versão:
+
+- Atualize `VERSION`, a constante `VERSAO` em `painel/index.html` e a linha de versão no topo do `README.md`, do `docs/MANUAL.md` e do `claude/MANUAL-CLAUDE.md`.
+- Escreva a entrada no topo do `CHANGELOG.md`, em português e do ponto de vista de quem usa, separando o que mudou na tela, no visual e na documentação.
+- Rode `empacotar_skill.py` e marque o commit com a tag `vX.Y.Z`.
 
 ## Commits e pull requests
 

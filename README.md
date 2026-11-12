@@ -1,5 +1,7 @@
 # Meu Assistente Financeiro
 
+**Versão 1.1.0** (12/11/2026) · [Novidades](CHANGELOG.md) · [Manual](docs/MANUAL.md) · [Versão com Claude](claude/MANUAL-CLAUDE.md)
+
 Um painel de finanças pessoais que **roda no seu computador**, sem servidor, sem cadastro, sem mensalidade e **sem precisar de IA paga**.
 
 Você baixa o extrato da conta e a fatura do cartão, joga numa pasta, roda um comando, e o painel mostra:
@@ -21,6 +23,15 @@ Tudo com tema claro/escuro, botão para esconder os valores (para tirar print) e
 | ![Financiamento](docs/img/financiamento.png) | ![Celular](docs/img/celular.png) |
 
 > As telas acima usam **dados fictícios** que vêm com o projeto.
+
+## Novidades da versão 1.1.0
+
+- **Visão geral redesenhada:** quanto você já gastou no dia a dia contra o teto do mês, quanto ainda dá para gastar por dia, metas, resultado, cartão e uma linha do tempo com salário, contas e vencimentos.
+- **Visual padronizado:** escala de espaçamento de 8 pontos, cards de três tamanhos, botões de 48 px e tipografia em escala em todas as abas.
+- **Celular:** menu em barra de abas embaixo, com os itens de longo prazo em "Mais".
+- **Regras de interface no `AGENTS.md`**, para que qualquer pessoa (ou IA) que altere o painel mantenha o mesmo padrão.
+
+Já usa a versão 1.0? Seus dados e regras continuam valendo: veja [como atualizar](docs/MANUAL.md#16-atualizar-para-uma-versão-nova). Lista completa em [CHANGELOG.md](CHANGELOG.md).
 
 ## Comece em 3 minutos
 
@@ -88,18 +99,31 @@ Assistentes de programação com IA (Claude Code, Codex, Copilot, Cursor) leem e
 ## Estrutura
 
 ```
-config.exemplo.json   modelo de configuração (copie para config.json)
-regras/               regras de categorização (edite à vontade)
-scripts/processar.py  lê os extratos e gera os dados do painel
-scripts/cotacoes.py   (opcional) busca cotações das ações
-scripts/montar_painel.py  gera o painel num arquivo único (celular, Claude)
-painel/index.html     o painel
-automacao/            rotina do dia 11 para Windows, Mac e Linux
-exemplo/              dados fictícios para testar
-claude/               versão com Claude: skill, manual, tarefas agendadas
-docs/MANUAL.md        manual completo
-AGENTS.md             instruções para agentes de IA que forem alterar o projeto
+meu-assistente-financeiro/
+├── README.md                  esta página
+├── CHANGELOG.md               novidades de cada versão
+├── VERSION                    número da versão atual (1.1.0)
+├── AGENTS.md                  regras para quem altera o código, com o design system do painel
+├── LICENSE                    licença MIT
+├── config.exemplo.json        modelo de configuração (copie para config.json)
+├── regras/
+│   └── categorias.csv         regras gerais de categorização (edite à vontade)
+├── scripts/
+│   ├── processar.py           lê os extratos e gera os dados do painel
+│   ├── montar_painel.py       gera o painel num arquivo único (celular, Claude)
+│   └── cotacoes.py            (opcional) busca cotações das ações
+├── painel/
+│   ├── index.html             o painel (HTML, CSS e JS num arquivo só, com os tokens de 8pt)
+│   └── dados-exemplo.js       dados fictícios gerados pelo processar.py --exemplo
+├── automacao/                 rotina do dia 11 para Windows, Mac e Linux
+├── exemplo/                   configuração, extratos e carteira fictícios para testar
+├── claude/                    versão com Claude: skill, zip da skill, manual e tarefas agendadas
+└── docs/
+    ├── MANUAL.md              manual completo
+    └── img/                   capturas de tela (dados fictícios)
 ```
+
+Arquivos que **você** cria e que nunca vão para o GitHub: `config.json`, `entrada/`, `dados/`, `regras-pessoais.csv`, `ajustes.csv`, `carteira.csv` e `cotacoes.csv`.
 
 ## Licença
 
